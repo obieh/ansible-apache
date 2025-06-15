@@ -1,0 +1,15 @@
+- hosts: servers
+  become: true
+  vars:
+   software: nginx
+  tasks:
+  - name: installing nginx
+    apt:
+     name: "{{ software }}"
+     state: present
+
+  - name: checking nginx service
+    service:
+     name: "{{ software }}"
+     state: started
+     enabled: yes
